@@ -1,0 +1,5 @@
+ControlFocus("Open","","Edit1")
+Sleep(3000)
+ControlSetText("Open","","Edit1","D:\Internship_2020\MarsQA_2\marsframework\MarsFramework\ExcelData\abc.jpg")
+Sleep(3000)
+ControlClick("Open","","Button1")
