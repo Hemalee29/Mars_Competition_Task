@@ -1,12 +1,19 @@
 ﻿using Excel;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using RelevantCodes.ExtentReports;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IdentityModel.Protocols.WSTrust;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using MarsFramework.Pages;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace MarsFramework.Global
 {
@@ -14,6 +21,26 @@ namespace MarsFramework.Global
     {
         //Initialise the browser
         public static IWebDriver driver { get; set; }
+        // public object ExtentManager { get; private set; }
+
+
+
+        public static void InitializeBrowser(int Browser)
+        {
+            // advisasble to read this documentation before proceeding http://extentreports.relevantcodes.com/net/
+            switch (Browser)
+            {
+
+                case 1:
+                    GlobalDefinitions.driver = new FirefoxDriver();
+                    break;
+                case 2:
+                    GlobalDefinitions.driver = new ChromeDriver();
+                    GlobalDefinitions.driver.Manage().Window.Maximize();
+                    break;
+
+            }
+        }
 
         #region WaitforElement 
 

@@ -7,31 +7,29 @@ namespace MarsFramework
     public class Program
     {
         [TestFixture]
-        [Category("Sprint1")]
+        //[Category("Sprint1")]
         class User : Global.Base
         {
-
-            [Test]
+            
+            [Test, Order(1)]
             public void AddShareSkillDetails()
             {
                 Thread.Sleep(3000);
-
+                test = extent.StartTest("AddShareSkill_Test");
                 //Add Share skill details on page
                 ShareSkill _shareSkill = new ShareSkill();
                 _shareSkill.GoToShareSkill();
                 _shareSkill.EnterShareSkill(2);
 
-                ////Check Record is add
-                //ManageListings _manageListing = new ManageListings();
-                //_manageListing.GoToManageList();
-                //_manageListing.CheckRecordAdded();
+               
 
             }
 
-            [Test]
+            [Test, Order(2)]
             public void EditShareSkillDetails()
             {
                 Thread.Sleep(3000);
+                test = extent.StartTest("EditShareSkill_Test");
 
                 //Add Share skill details on page
                 ManageListings _manageListings = new ManageListings();
@@ -40,11 +38,11 @@ namespace MarsFramework
                 _manageListings.EditManageListing(2);
 
             }
-            [Test]
+            [Test, Order(3)]
             public void DeleteShareSkillDetails()
             {
                 Thread.Sleep(3000);
-
+                test = extent.StartTest("DeleteShareSkill_Test");
                 //Add Share skill details on page
                 ManageListings _manageListings = new ManageListings();
                 Thread.Sleep(2000);

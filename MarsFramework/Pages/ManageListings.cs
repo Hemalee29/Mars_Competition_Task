@@ -137,6 +137,13 @@ namespace MarsFramework.Pages
         [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]")]
         private IWebElement getTitle { get; set; }
 
+        //Check for Des in manage list
+        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]")]
+        private IWebElement getDes { get; set; }
+
+        //Check for catgory in manage list
+        [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[2]")]
+        private IWebElement getcategory { get; set; }
         //
         [FindsBy(How = How.XPath, Using = "//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/thead/tr/th[3]")]
         private IWebElement CheckRow { get; set; }
@@ -156,6 +163,23 @@ namespace MarsFramework.Pages
             
 
 
+        }
+        internal void CheckRecordAddorNot(int dataRow)
+        {
+            Thread.Sleep(2000);
+            //Initialize Excel file
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SkillDetails");
+            string actualText = GlobalDefinitions.ExcelLib.ReadData(dataRow, "Title");
+            string actualDes = GlobalDefinitions.ExcelLib.ReadData(dataRow, "Description");
+            string actualcatgory = GlobalDefinitions.ExcelLib.ReadData(dataRow, "Category");
+            if (getTitle.Text == actualText && getDes.Text == actualDes && getcategory.Text == actualcatgory)
+            {
+                Assert.Pass("Record is  Added ", "Test Pass");
+            }
+            else
+            {
+                Assert.Fail("Record is not Added successfuly", "Test Fail");
+            }
         }
         internal void ClickOnEditButton()
         {

@@ -1,6 +1,7 @@
 ﻿using MarsFramework.Global;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
 
 namespace MarsFramework.Pages
 {
@@ -48,6 +49,11 @@ namespace MarsFramework.Pages
             LoginBtn.Click();
 
             // Thread.Sleep(3000);
+        }
+
+        internal void SignInStep(IWebDriver driver)
+        {
+            throw new NotImplementedException();
         }
     }
 }

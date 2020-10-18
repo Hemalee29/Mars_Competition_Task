@@ -1,4 +1,5 @@
-﻿using MarsFramework.Config;
+﻿using RelevantCodes.ExtentReports;
+using MarsFramework.Config;
 using MarsFramework.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
@@ -6,6 +7,7 @@ using OpenQA.Selenium.Firefox;
 using RelevantCodes.ExtentReports;
 using System;
 using static MarsFramework.Global.GlobalDefinitions;
+using System.IO;
 
 namespace MarsFramework.Global
 {
@@ -14,11 +16,15 @@ namespace MarsFramework.Global
         #region To access Path from resource file
 
         public static int Browser = Int32.Parse(MarsResource.Browser);
-        public static String ExcelPath = "D:\\Internship_2020\\MarsQA_2\\marsframework\\MarsFramework\\ExcelData\\TestData.xlsx";
-        public static string ScreenshotPath = MarsResource.ScreenShotPath;
-        public static string ReportPath = MarsResource.ReportPath;
+        public static string excel = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\");
+
+        public static string ExcelPath = excel + @"\ExcelData\TestData.xlsx";
+        public static string ScreenshotPath = excel + @"\TestReports";
+        
+        //public static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "..\\..\\");
+        public static string ReportPath = excel + @"\TestReports\Report.html";
         //docker path
-        public static string DockerPath = "http://192.168.99.100:5000";
+        public static string BaseUrl = "http://192.168.99.100:5000";
 
         #endregion
 
@@ -32,22 +38,12 @@ namespace MarsFramework.Global
         public void Inititalize()
         {
 
-            // advisasble to read this documentation before proceeding http://extentreports.relevantcodes.com/net/
-            switch (Browser)
-            {
+            //initialize browser
+            InitializeBrowser(Browser);
+            driver.Navigate().GoToUrl(BaseUrl);
 
-                case 1:
-                    GlobalDefinitions.driver = new FirefoxDriver();
-                    break;
-                case 2:
-                    GlobalDefinitions.driver = new ChromeDriver();
-                    GlobalDefinitions.driver.Manage().Window.Maximize();
-                    break;
-
-            }
-            GlobalDefinitions.driver.Navigate().GoToUrl(Base.DockerPath);
             #region Initialise Reports
-            
+
             extent = new ExtentReports(ReportPath, false, DisplayOrder.NewestFirst);
             extent.LoadConfig(MarsResource.ReportXMLPath);
 
@@ -64,20 +60,22 @@ namespace MarsFramework.Global
                 obj.register();
             }
 
+            
         }
 
+       
 
         [TearDown]
         public void TearDown()
         {
-            //// Screenshot
-            //String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-            //test.Log(LogStatus.Info, "Image example: " + img);
-            //// end test. (Reports)
-            //extent.EndTest(test);
-            //// calling Flush writes everything to the log file (Reports)
-            //extent.Flush();
-            //// Close the driver :)            
+            // Screenshot
+            String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
+            test.Log(LogStatus.Info, "Image example: " + img);
+            // end test. (Reports)
+            extent.EndTest(test);
+            // calling Flush writes everything to the log file (Reports)
+            extent.Flush();
+            // Close the driver :)            
             GlobalDefinitions.driver.Close();
             GlobalDefinitions.driver.Quit();
         }
