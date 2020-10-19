@@ -274,22 +274,24 @@ namespace MarsFramework.Pages
 
             //Mon.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Select day"));
             Mon.Click();
+            Console.WriteLine(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime")).ToString("hh:mmtt"));
+            MonStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime")).ToString("hh:mmtt"));
             //MonStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime")).ToLongTimeString());
             //DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime")).ToString("HH:mm");
 
-
+            MonEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime")).ToString("hh:mmtt"));
 
 
             //MonStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime") + Keys.Enter);
-           MonEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime")).ToLongTimeString());
+            //MonEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime")).ToLongTimeString());
             //MonEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime") + Keys.Enter);
             
 
             Tue.Click();
-            TueStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime")).ToString("hh:mm:tt"));
+            TueStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime")).ToString("hh:mmtt"));
 
             //MonStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime") + Keys.Enter);
-            TueEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "EndTime")).ToString("hh:mm:tt"));
+            TueEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "EndTime")).ToString("hh:mmtt"));
             //MonEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime") + Keys.Enter);
 
             //TueStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime"));
