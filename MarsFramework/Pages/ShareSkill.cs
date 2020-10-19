@@ -262,26 +262,41 @@ namespace MarsFramework.Pages
 
         internal void Avalible_Days_Time_Details(int dataRow)
         {
-            StartDate.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
+            DateTime myvalue = DateTime.Now;
+            StartDate.SendKeys(myvalue.AddDays(3).ToLongDateString());
+            //StartDate.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
+            
+            
             // Fill End Date
             EndDate.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));
 
+
+
+            //Mon.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Select day"));
             Mon.Click();
-            MonStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime") + Keys.Enter);
-            MonEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime") + Keys.Enter);
+            //MonStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime")).ToLongTimeString());
+            //DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime")).ToString("HH:mm");
+
+
+
+
+            //MonStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime") + Keys.Enter);
+           MonEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime")).ToLongTimeString());
+            //MonEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime") + Keys.Enter);
             
 
             Tue.Click();
-            TueStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime"));
-            TueEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "EndTime"));
+            TueStartTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime")).ToString("hh:mm:tt"));
+
+            //MonStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime") + Keys.Enter);
+            TueEndTime.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(3, "EndTime")).ToString("hh:mm:tt"));
+            //MonEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "EndTime") + Keys.Enter);
+
+            //TueStartTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "StartTime"));
+            //TueEndTime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "EndTime"));
 
             
 
-            //StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "StartDate") + Keys.Enter);
-            //EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "EndDate") + Keys.Enter);
-           
-            //StartTimeDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "StartTime") + Keys.Enter);
-            //EndTimeDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "EndTime") + Keys.Enter);
             SkillExchange.Click();
             SkillExchange.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Skill-Exchange") + Keys.Enter);
     

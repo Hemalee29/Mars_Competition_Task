@@ -20,8 +20,11 @@ namespace MarsFramework
                 ShareSkill _shareSkill = new ShareSkill();
                 _shareSkill.GoToShareSkill();
                 _shareSkill.EnterShareSkill(2);
+                ManageListings _manageListings = new ManageListings();
+                _manageListings.GoToManageListing();
+                _manageListings.CheckRecordAddorNot(2);
 
-               
+
 
             }
 
@@ -36,6 +39,8 @@ namespace MarsFramework
                 _manageListings.GoToManageListing();
                 _manageListings.ClickOnEditButton();
                 _manageListings.EditManageListing(2);
+                _manageListings.GoToManageListing();
+                _manageListings.CheckRecordEdited(2);
 
             }
             [Test, Order(3)]

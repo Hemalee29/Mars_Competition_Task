@@ -194,19 +194,21 @@ namespace MarsFramework.Pages
         {
             Thread.Sleep(2000);
             Title.Clear();
-            Title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Title"));
+            Title.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Title"));
+
             Description.Clear();
-            Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Description"));
+            Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
             Thread.Sleep(2000);
-            
-            CategoryDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Category"));
-            CategoryDropDown.Click();
+
+            //CategoryDropDown.Clear();
+            CategoryDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
+            //CategoryDropDown.Click();
 
             Thread.Sleep(2000);
-            SubCategoryDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "SubCategory"));
+            SubCategoryDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
             SubCategoryDropDown.Click();
             Tags.Clear();
-            Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Tags"));
+            Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
             Tags.SendKeys(Keys.Enter);
             Tags.Click();
 
@@ -242,11 +244,22 @@ namespace MarsFramework.Pages
 
             //Date and  time
 
-            StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Startdate") + Keys.Enter);
-            StartDateDropDown.Click();
-            EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Enddate") + Keys.Enter);
-            EndDateDropDown.Click();
-            Days.Click();
+            StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
+            // Fill End Date
+            EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));
+
+           
+
+            //Days.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Selectday"));
+
+            //StartDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Startdate") + Keys.Enter);
+            //StartDateDropDown.Click();
+            //EndDateDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "Enddate") + Keys.Enter);
+            //EndDateDropDown.Click();
+
+
+
+
             StartTimeDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "StartTime") + Keys.Enter);
             StartTimeDropDown.Click();
             EndTimeDropDown.SendKeys(GlobalDefinitions.ExcelLib.ReadData(dataRow, "EndTime") + Keys.Enter);
