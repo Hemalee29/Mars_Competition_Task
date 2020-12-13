@@ -59,6 +59,14 @@ namespace MarsFramework
 
             }
 
+            //[Test, Order(4)]
+            //public void Langauge_Add()
+            //{
+            //    Thread.Sleep(2000);
+            //    Langauge _Language = new Langauge();
+            //    _Language.Langauge_Add(2);
+
+            //}
         }
 
     }

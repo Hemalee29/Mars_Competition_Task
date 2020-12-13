@@ -264,10 +264,12 @@ namespace MarsFramework.Pages
         {
             DateTime myvalue = DateTime.Now;
             StartDate.SendKeys(myvalue.AddDays(3).ToLongDateString());
+
             //StartDate.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Startdate"));
-            
-            
+
+
             // Fill End Date
+            
             EndDate.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Enddate"));
 
 
